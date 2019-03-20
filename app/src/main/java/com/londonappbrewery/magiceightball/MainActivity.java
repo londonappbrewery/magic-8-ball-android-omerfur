@@ -1,5 +1,6 @@
 package com.londonappbrewery.magiceightball;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,19 +16,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ImageView ballDisplay = (ImageView) findViewById(R.id.image_eightBall);
+        Button askbutton = (Button) findViewById(R.id.ask_btn);
+        final ImageView ball = (ImageView) findViewById(R.id.main_image);
+        final int balls [] ={R.drawable.ball1,
+                R.drawable.ball2,
+                R.drawable.ball3,
+                R.drawable.ball4,
+                R.drawable.ball5};
 
-        final int [] ballArray = {R.drawable.ball1, R.drawable.ball2, R.drawable.ball3, R.drawable.ball4, R.drawable.ball5};
-
-        final Button askbutton = (Button) findViewById(R.id.askButton);
         askbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Random random = new Random();
-                int randomnum = random.nextInt(4);
-
-                ballDisplay.setImageResource(ballArray[randomnum]);
+                ball.setImageResource(balls[new Random().nextInt(5)]);
             }
         });
+
     }
 }
